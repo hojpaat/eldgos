@@ -1,0 +1,14 @@
+type Volcano {
+    name: String!
+    rockType: Rock
+}
+
+type Rock {
+    id: String!
+    name: String!
+}
+
+type Query {
+    getByName(name: String): Volcano
+    getAllVolcano : [Volcano]
+}
