@@ -1,4 +1,4 @@
-package com.info.eldgos.Models;
+package com.info.eldgos.models;
 
 import java.util.Arrays;
 import java.util.List;

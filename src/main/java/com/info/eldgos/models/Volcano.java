@@ -1,4 +1,4 @@
-package com.info.eldgos.Models;
+package com.info.eldgos.models;
 
 import java.time.LocalDate;
 import java.util.Arrays;
