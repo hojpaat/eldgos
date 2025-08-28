@@ -1,21 +1,23 @@
 package com.info.eldgos.service;
 import com.info.eldgos.models.Volcano;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
+import org.springframework.web.client.RestClient;
+
+import java.util.List;
 
 @Service
-@AllArgsConstructor
-public class VolcanoService {
-    private final WebClient webClient;
 
-    public void getAllVolcanos() {
-         Mono<Volcano> volcanos = webClient
-                 .get()
-                 .uri("/volcano/general-information/list-of-volcanoes?format_type=JSON")
-                 .retrieve()
-                 .bodyToMono(Volcano.class);
-         
+public class VolcanoService {
+
+    private final RestClient restClient;
+
+    public VolcanoService(RestClient.Builder restClientBuilder) {
+        this.restClient = restClientBuilder
+                .baseUrl("https://api.epos-iceland.is/v1/volcano")
+                .build();
+    }
+
+    public List<Volcano> getAllVolcanos() {
+        return restClient.get().uri("/general-information/list-of-volcanoes").retrieve().body(List.class);
     }
 }
