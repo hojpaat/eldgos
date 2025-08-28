@@ -18,7 +18,11 @@ public class VolcanoService {
     }
 
     public List<Volcano> getAllVolcanos() {
-        List volcanos = restClient.get().uri("/general-information/list-of-volcanoes").retrieve().body(List.class);
-        return volcanos;
+        List<Volcano> body = restClient
+                .get()
+                .uri("/general-information/list-of-volcanoes")
+                .retrieve()
+                .body(List.class);
+        return body;
     }
 }
